@@ -325,6 +325,119 @@
           ]
         }
       ]
+    },
+    {
+      id: "safety",
+      title: "Phone and account safety",
+      intro: "For anyone who thinks someone may be watching their phone or accounts. Read step 1 before you change anything.",
+      steps: [
+        {
+          id: "plan",
+          title: "1. Read this first: make a safety plan",
+          why: "If someone is monitoring you, removing their access can alert them and make things worse.",
+          bringLabel: "Before you change anything",
+          bring: [
+            "Use a different device you trust (a friend's phone or a library computer) to look up help",
+            "Talk to a trained advocate about a safety plan before removing anything",
+            "Think about whether removing access could put you at risk"
+          ],
+          tips: [
+            "The National Domestic Violence Hotline is free and confidential: call 1-800-799-7233, or text START to 88788.",
+            "If you are in immediate danger, call 911.",
+            "Not every worry means someone is watching you. These steps are still worth knowing."
+          ],
+          links: [
+            { label: "National Domestic Violence Hotline", url: "https://www.thehotline.org/" },
+            { label: "Tech safety guides (NNEDV Safety Net)", url: "https://www.techsafety.org/" },
+            { label: "Coalition Against Stalkerware", url: "https://stopstalkerware.org/" }
+          ]
+        },
+        {
+          id: "signs",
+          title: "2. Know the warning signs",
+          why: "These can point to monitoring, but none of them proves it alone.",
+          bringLabel: "What to check",
+          bring: [
+            "Battery draining much faster than normal, or the phone running hot",
+            "Data use jumping up for no reason",
+            "Apps you do not remember installing",
+            "Someone knows things they should not, like where you were or what you wrote",
+            "Settings changed that you did not change"
+          ],
+          tips: [
+            "Many of these signs have normal causes, like an old battery or an update.",
+            "Spyware often hides. A clean look does not guarantee a clean phone."
+          ],
+          links: [
+            { label: "Stalkerware: what it is and how to spot it", url: "https://stopstalkerware.org/" }
+          ]
+        },
+        {
+          id: "apps",
+          title: "3. Review apps and permissions",
+          why: "This is where unwanted access usually shows up.",
+          bringLabel: "What to check",
+          bring: [
+            "Look through your full app list for anything you do not recognize",
+            "iPhone: Settings > Privacy & Security > Safety Check (iOS 16 and newer) walks you through sharing and access",
+            "iPhone: Settings > General > VPN & Device Management, and look for profiles you do not recognize",
+            "Android: look in Settings for Device admin apps, Accessibility, and Install unknown apps. Menu names vary by phone.",
+            "Check which apps can use your location, microphone, and camera",
+            "Android: run a Google Play Protect scan from the Play Store"
+          ],
+          tips: [
+            "Do this after step 1, not before.",
+            "If an unknown app has admin or accessibility access, that is a red flag."
+          ],
+          links: [
+            { label: "Apple Personal Safety guide", url: "https://support.apple.com/guide/personal-safety/welcome/web" },
+            { label: "Google account security checkup", url: "https://myaccount.google.com/security" }
+          ]
+        },
+        {
+          id: "accounts",
+          title: "4. Check who can get into your accounts",
+          why: "Someone does not need your phone if they can sign in to your accounts.",
+          bringLabel: "What to check",
+          bring: [
+            "Email (Gmail, Proton, etc.): look at recent sign-ins and connected devices",
+            "Apple ID or Google account: look at the list of devices signed in",
+            "Social media and banking apps: look at active sessions and logged-in devices",
+            "Shared plans, location sharing, and family groups you did not set up",
+            "Email forwarding rules or recovery email and phone number you do not recognize"
+          ],
+          tips: [
+            "Use a device you trust for this, especially if you think your phone is monitored.",
+            "Write down what you find before changing anything."
+          ],
+          links: [
+            { label: "Google: devices with account access", url: "https://myaccount.google.com/device-activity" },
+            { label: "Proton Mail", url: "https://proton.me/mail" }
+          ]
+        },
+        {
+          id: "lock",
+          title: "5. Lock it down",
+          why: "Once you are safe to make changes, these close the doors.",
+          bringLabel: "What to do",
+          bring: [
+            "Change your passwords from a device you trust, starting with email",
+            "Turn on two-step verification, using an authenticator app if you can",
+            "Set a new screen lock code that nobody else knows",
+            "Update your phone's software",
+            "Turn off any location sharing you did not choose",
+            "Last resort: a factory reset removes most spyware. Back up only photos and contacts, not apps."
+          ],
+          tips: [
+            "Do this only after step 1, since changes can alert someone who is watching.",
+            "A new phone with new accounts is the most reliable fix if you can get one."
+          ],
+          links: [
+            { label: "Tech safety guides (NNEDV Safety Net)", url: "https://www.techsafety.org/" },
+            { label: "211: help near you", url: "https://www.211.org/" }
+          ]
+        }
+      ]
     }
   ];
 
@@ -396,7 +509,7 @@
         card.appendChild(sum);
 
         card.appendChild(node("p", s.why, "margin:8px 0 0;"));
-        card.appendChild(bullets("What to bring", s.bring));
+        card.appendChild(bullets(s.bringLabel || "What to bring", s.bring));
         card.appendChild(bullets("Good to know", s.tips));
 
         var lk = node("div", "", "margin-top:12px;display:flex;flex-direction:column;gap:10px;");
