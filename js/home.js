@@ -58,6 +58,10 @@
       { label: "Support contacts", href: "#/contacts" },
       { label: "Crisis: 988", href: "tel:988", sub: "Call or text, 24/7" }
     ]);
+    section("Next steps", [
+      { label: "Local jobs", href: "#/jobs", sub: "Search + track applications" },
+      { label: "Housing", href: "#/housing", sub: "Sober living + apartments" }
+    ]);
     section("Learn", [
       { label: "Coping skills", href: "#/skills" },
       { label: "Neuroscience class", href: "#/brain" }
