@@ -271,6 +271,13 @@
     return n;
   }
 
+  function arrowFor(d) {
+    var a = node("span", "\u25B8", "display:inline-block;width:1.2em;flex:none;");
+    a.setAttribute("aria-hidden", "true");
+    d.addEventListener("toggle", function () { a.textContent = d.open ? "\u25BE" : "\u25B8"; });
+    return a;
+  }
+
   function bullets(title, items) {
     var box = document.createElement("div");
     box.appendChild(node("strong", title, "display:block;margin:10px 0 4px;"));
@@ -295,7 +302,10 @@
 
       var group = node("details", "", "margin:0 0 16px;");
       var gs = node("summary", "", "cursor:pointer;min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:1.15em;font-weight:bold;");
-      gs.appendChild(node("span", list.title));
+      var tt = node("span", "", "display:flex;align-items:center;gap:6px;");
+      tt.appendChild(arrowFor(group));
+      tt.appendChild(node("span", list.title));
+      gs.appendChild(tt);
       gs.appendChild(progress);
       group.appendChild(gs);
       group.appendChild(el("p", { class: "muted", text: list.intro }));
@@ -316,6 +326,7 @@
           save(done);
           updateProgress();
         });
+        sum.appendChild(arrowFor(card));
         sum.appendChild(cb);
         sum.appendChild(node("span", s.title, "font-weight:bold;"));
         card.appendChild(sum);

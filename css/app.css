@@ -122,3 +122,6 @@ ul.plain, ol.plain { margin: 0 0 12px; padding-left: 1.3em; } ul.plain li, ol.pl
 .row-link { display: block; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
 @media (forced-colors: active) { .tile, .row-link, .card, .btn { border: 1px solid CanvasText; } .bar div { background: Highlight; } }
+
+summary { list-style: none; }
+summary::-webkit-details-marker { display: none; }
