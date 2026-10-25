@@ -1,8 +1,8 @@
 // Offline cache. Bump CACHE whenever any file changes so phones pick up the update.
-const CACHE = "chrysalis-v3";
+const CACHE = "chrysalis-v4";
 const FILES = [
   "./", "index.html", "manifest.webmanifest", "css/app.css", "data/content.js",
-  "js/core.js", "js/home.js", "js/sos.js", "js/plan.js", "js/contacts.js", "js/learn.js", "js/util.js", "js/checkin.js", "js/insights.js", "js/milestones.js", "js/meetings.js", "js/sponsor.js", "js/appts.js", "js/routine.js", "js/export.js", "js/letter.js", "js/tracker.js", "js/jobs.js", "js/housing.js", "js/backup.js", "js/app.js",
+  "js/core.js", "js/home.js", "js/sos.js", "js/plan.js", "js/contacts.js", "js/learn.js", "js/util.js", "js/checkin.js", "js/insights.js", "js/milestones.js", "js/meetings.js", "js/sponsor.js", "js/appts.js", "js/routine.js", "js/export.js", "js/letter.js", "js/tracker.js", "js/jobs.js", "js/housing.js", "js/basics.js", "js/backup.js", "js/app.js",
   "icons/icon.svg", "icons/icon-180.png", "icons/icon-192.png", "icons/icon-512.png"
 ];
 self.addEventListener("install", (e) => {
