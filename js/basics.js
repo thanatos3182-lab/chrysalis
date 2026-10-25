@@ -80,6 +80,70 @@
       ]
     },
     {
+      id: "mail",
+      title: "Mailing address and getting around",
+      intro: "No address or ride can block everything else. These are ways to solve both.",
+      steps: [
+        {
+          id: "address",
+          title: "1. Get a mailing address",
+          why: "IDs, benefits, and bank accounts all mail things to you.",
+          bring: [
+            "A shelter, program, case manager, or trusted person who agrees to receive mail for you",
+            "Or a PO Box (USPS asks for two forms of ID, one with a photo, and a fee)",
+            "Or USPS General Delivery: a post office can hold mail for people with no fixed address"
+          ],
+          tips: [
+            "Always ask permission before using someone's address.",
+            "Call the post office first and ask what they need for General Delivery. Rules vary by location.",
+            "If you are leaving an abusive situation, many states have a free confidential address program. The National Domestic Violence Hotline (1-800-799-7233) or 211 can point you to it."
+          ],
+          links: [
+            { label: "USPS: PO Boxes", url: "https://www.usps.com/manage/po-boxes.htm" },
+            { label: "Find a post office near me", url: "https://tools.usps.com/find-location.htm" },
+            { label: "211: shelters and programs near you", url: "https://www.211.org/" },
+            { label: "National Domestic Violence Hotline", url: "https://www.thehotline.org/" }
+          ]
+        },
+        {
+          id: "transit",
+          title: "2. Get a bus pass or reduced fare",
+          why: "Reliable rides mean you can get to work, appointments, and meetings.",
+          bring: [
+            "Photo ID if you have one",
+            "Proof of income or benefits (for reduced fares)",
+            "Ask your program or case manager if they hand out free passes"
+          ],
+          tips: [
+            "Many transit agencies have reduced-fare or low-income passes. Ask at their customer service desk.",
+            "Treatment programs, job centers, and churches sometimes give out bus passes."
+          ],
+          links: [
+            { label: "Reduced-fare transit near me", needsLocation: true, url: function (zip) { return "https://www.google.com/search?q=" + q("reduced fare bus pass low income near " + zip); } },
+            { label: "211: transportation help", url: "https://www.211.org/" }
+          ]
+        },
+        {
+          id: "rides",
+          title: "3. Rides to medical appointments",
+          why: "Missing a visit because you had no ride is avoidable.",
+          bring: [
+            "Your Medicaid card or member number",
+            "The date, time, and address of the appointment"
+          ],
+          tips: [
+            "Medicaid covers non-emergency rides to medical appointments in most cases. This includes treatment and counseling visits.",
+            "Call the number on the back of your Medicaid card and ask for non-emergency medical transportation. Book as early as you can.",
+            "Your program or clinic can often help set up the ride."
+          ],
+          links: [
+            { label: "Rides to appointments near me", needsLocation: true, url: function (zip) { return "https://www.google.com/search?q=" + q("Medicaid non-emergency medical transportation " + zip); } },
+            { label: "211: free or low-cost rides", url: "https://www.211.org/" }
+          ]
+        }
+      ]
+    },
+    {
       id: "benefits",
       title: "Benefits",
       intro: "Food, health coverage, and phone help. Rules and income limits differ by state and change over time, so check your state's official page for the latest.",
