@@ -5,8 +5,12 @@
   var KEY = "rc_basics_done";
   var q = encodeURIComponent;
 
-  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } }
-  function save(d) { try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {} }
+  function load() {
+    var d = RC.store.get("basics", null);
+    if (d) return d;
+    try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; }
+  }
+  function save(d) { RC.store.set("basics", d); }
 
   var LISTS = [
     {
