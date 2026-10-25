@@ -466,15 +466,19 @@
     var done = load();
 
     LISTS.forEach(function (list) {
-      var progress = node("p", "", "margin:4px 0 12px;");
+      var progress = node("span", "", "font-weight:normal;font-size:0.85em;");
       function updateProgress() {
         var n = list.steps.filter(function (s) { return done[list.id + ":" + s.id]; }).length;
         progress.textContent = n + " of " + list.steps.length + " done";
       }
 
-      RC.app.appendChild(node("h2", list.title));
-      RC.app.appendChild(el("p", { class: "muted", text: list.intro }));
-      RC.app.appendChild(progress);
+      var group = node("details", "", "margin:0 0 16px;");
+      var gs = node("summary", "", "cursor:pointer;min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:1.15em;font-weight:bold;");
+      gs.appendChild(node("span", list.title));
+      gs.appendChild(progress);
+      group.appendChild(gs);
+      group.appendChild(el("p", { class: "muted", text: list.intro }));
+      // progress now shows in the heading
 
       list.steps.forEach(function (s) {
         var key = list.id + ":" + s.id;
@@ -516,9 +520,10 @@
           lk.appendChild(a);
         });
         card.appendChild(lk);
-        RC.app.appendChild(card);
+        group.appendChild(card);
       });
       updateProgress();
+      RC.app.appendChild(group);
     });
   };
 })();

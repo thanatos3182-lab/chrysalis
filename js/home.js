@@ -66,11 +66,11 @@
       { label: "Milestones and savings", href: "#/milestones" }
     ]);
     section("Next steps", [
+      { label: "Basics", href: "#/basics", sub: "ID, benefits, bank: step by step" },
       { label: "Meetings", href: "#/meetings" },
       { label: "Find a sponsor", href: "#/sponsor" },
       { label: "Local jobs", href: "#/jobs", sub: "Search + track applications" },
-      { label: "Housing", href: "#/housing", sub: "Sober living + apartments" },
-      { label: "Basics", href: "#/basics", sub: "ID, benefits, bank: step by step" }
+      { label: "Housing", href: "#/housing", sub: "Sober living + apartments" }
     ]);
     section("Learn", [
       { label: "Coping skills", href: "#/skills" },
