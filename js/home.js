@@ -37,7 +37,7 @@
     RC.clear();
     var head = el("div", { class: "head" });
     head.appendChild(RC.logo());
-    head.appendChild(el("h1", { text: "Chrysalis" }));
+    head.appendChild(el("h1", { text: "Chrysalis", tabindex: "-1" }));
     head.appendChild(el("p", { class: "tag", text: "One day at a time." }));
     RC.app.appendChild(head);
 
@@ -58,7 +58,16 @@
       { label: "Support contacts", href: "#/contacts" },
       { label: "Crisis: 988", href: "tel:988", sub: "Call or text, 24/7" }
     ]);
+    section("Daily", [
+      { label: "Daily check-in", href: "#/checkin", sub: "Mood, sleep, urge" },
+      { label: "Pattern insights", href: "#/insights" },
+      { label: "Daily structure", href: "#/routine", sub: "Plan your day" },
+      { label: "Appointments", href: "#/appts" },
+      { label: "Milestones and savings", href: "#/milestones" }
+    ]);
     section("Next steps", [
+      { label: "Meetings", href: "#/meetings" },
+      { label: "Find a sponsor", href: "#/sponsor" },
       { label: "Local jobs", href: "#/jobs", sub: "Search + track applications" },
       { label: "Housing", href: "#/housing", sub: "Sober living + apartments" }
     ]);
@@ -97,7 +106,11 @@
       RC.app.appendChild(card);
     }
 
-    section("Your data", [{ label: "Backup and restore", href: "#/backup", sub: "Keep a copy of your entries" }]);
+    RC.app.appendChild(RC.dailyLetter());
+    section("Your data", [
+      { label: "Backup and restore", href: "#/backup", sub: "Keep a copy of your entries" },
+      { label: "Counselor summary", href: "#/export", sub: "Share what you choose" }
+    ]);
     RC.app.appendChild(el("p", { class: "note", text: "Everything you write stays on this device. Nothing is sent anywhere." }));
   }
 

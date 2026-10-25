@@ -25,13 +25,17 @@ and a backup file is the safety net.
 | Coping skills (12) | done |
 | Neuroscience class (19 lessons, research links) | done |
 | Backup and restore | done |
-| Daily check-in, pattern insights, daily structure | to port |
-| Milestones and savings, counselor summary | to port |
-| Meetings, sponsor finder, appointments | to port |
-| Local jobs, job tracker, housing, housing tracker | to port |
-| Daily letter | to port |
+| Daily check-in, pattern insights, daily structure, appointments | done |
+| Milestones and savings, counselor summary | done |
+| Meetings, sponsor finder | done |
+| Local jobs, job tracker, housing, housing tracker | done |
+| Daily letter | done |
 
-Not planned for the web version: push-style reminders. iOS web apps can't schedule local notifications.
+Not possible in a web app: push-style reminders. Appointments and meetings export a calendar file (with a reminder) instead.
+
+## Accessibility
+
+Keyboard and screen reader friendly: headings, labelled fields, focus moves to each screen's heading, dialogs trap focus and close with Escape, sliders announce values, charts have text equivalents, and animations respect reduced-motion settings. Nothing flashes.
 
 ## Run it locally
 

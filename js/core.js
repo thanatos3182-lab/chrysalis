@@ -49,9 +49,9 @@
   RC.shell = function (title, back) {
     RC.clear();
     RC.app.appendChild(RC.el("div", { class: "top" }, [
-      RC.el("button", { class: "back", text: "\u2039 Back", onclick: function () { RC.go(back || "#/"); } })
+      RC.el("button", { class: "back", text: "\u2039 Back", "aria-label": "Back", onclick: function () { RC.go(back || "#/"); } })
     ]));
-    if (title) RC.app.appendChild(RC.el("h1", { text: title }));
+    if (title) RC.app.appendChild(RC.el("h1", { text: title, tabindex: "-1" }));
   };
 
   var toastTimer;
