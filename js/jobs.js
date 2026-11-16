@@ -9,6 +9,7 @@
     RC.app.appendChild(el("p", { class: "muted", text: "Enter your ZIP (or City, ST) once, then tap a site to see openings near you. Saved on this device only." }));
     var loc = RC.locationBox({ key: "jobwhat", fallback: "part time", label: "What kind of work?", placeholder: "part time, warehouse, cashier..." });
     RC.linkList("Search", [
+      { label: "ZipRecruiter", needsLocation: true, url: function () { return "https://www.ziprecruiter.com/jobs-search?search=" + q(loc.what()) + "&location=" + q(loc.zip()); } },
       { label: "Indeed (newest first)", needsLocation: true, url: function () { return "https://www.indeed.com/jobs?q=" + q(loc.what()) + "&l=" + q(loc.zip()) + "&sort=date"; } },
       { label: "Google Jobs", needsLocation: true, url: function () { return "https://www.google.com/search?q=" + q(loc.what() + " jobs near " + loc.zip()) + "&ibp=htl;jobs"; } },
       { label: "LinkedIn (part-time)", needsLocation: true, url: function () { return "https://www.linkedin.com/jobs/search/?keywords=" + q(loc.what()) + "&location=" + q(loc.zip()) + "&f_JT=P"; } },

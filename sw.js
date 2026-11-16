@@ -1,5 +1,5 @@
 // Offline cache. Bump CACHE whenever any file changes so phones pick up the update.
-const CACHE = "chrysalis-v14";
+const CACHE = "chrysalis-v15";
 const FILES = [
   "./", "index.html", "manifest.webmanifest", "css/app.css", "data/content.js", "data/learn.js",
   "js/core.js", "js/home.js", "js/sos.js", "js/plan.js", "js/contacts.js", "js/learn.js", "js/learning.js", "js/util.js", "js/checkin.js", "js/insights.js", "js/connections.js", "js/milestones.js", "js/meetings.js", "js/sponsor.js", "js/appts.js", "js/routine.js", "js/export.js", "js/letter.js", "js/tracker.js", "js/jobs.js", "js/housing.js", "js/basics.js", "js/backup.js", "js/app.js",
