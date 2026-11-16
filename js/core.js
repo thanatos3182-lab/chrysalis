@@ -49,7 +49,7 @@
   RC.shell = function (title, back) {
     RC.clear();
     RC.app.appendChild(RC.el("div", { class: "top" }, [
-      RC.el("button", { class: "back", text: "\u2039 Back", "aria-label": "Back", onclick: function () { RC.go(back || "#/"); } })
+      RC.el("button", { class: "back", text: "\u2039 Back", "aria-label": "Back", onclick: function () { if (typeof back === "function") back(); else RC.go(back || "#/"); } })
     ]));
     if (title) RC.app.appendChild(RC.el("h1", { text: title, tabindex: "-1" }));
   };
@@ -107,11 +107,18 @@
   };
 
   // ---------- journal (shared by home and Craving SOS) ----------
+  // Tags you can put on a journal entry. Pattern connections count these, so the spelling is fixed.
+  RC.TAGS = {
+    moods: ["calm", "anxious", "sad", "angry", "numb", "hopeful", "tired"],
+    triggers: ["stress", "boredom", "loneliness", "conflict", "people/places", "poor sleep", "money", "no trigger"],
+    skills: ["breathing", "delay", "called someone", "movement", "grounding", "meeting", "no skill"]
+  };
+
   RC.journal = {
     all: function () { return RC.store.get("journal", []); },
-    add: function (text) {
+    add: function (text, tags) {
       var list = RC.journal.all(); var ts = Date.now();
-      list.unshift({ id: ts, ts: ts, text: text });
+      list.unshift({ id: ts, ts: ts, text: text, tags: tags || [] });
       return RC.store.set("journal", list);
     },
     remove: function (id) {

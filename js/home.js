@@ -33,6 +33,22 @@
     overlay.appendChild(box); document.body.appendChild(overlay); input.focus();
   }
 
+  var filterTag = "";   // journal filter, kept while the app is open
+
+  // A group of toggle buttons. `picked` is the shared list of chosen tags.
+  function chipGroup(label, opts, picked) {
+    var set = el("fieldset", { class: "tagset" }, [el("legend", { text: label })]);
+    opts.forEach(function (o) {
+      var b = el("button", { type: "button", class: "chip", "aria-pressed": "false", text: o, onclick: function () {
+        var i = picked.indexOf(o);
+        if (i >= 0) { picked.splice(i, 1); b.setAttribute("aria-pressed", "false"); }
+        else { picked.push(o); b.setAttribute("aria-pressed", "true"); }
+      } });
+      set.appendChild(b);
+    });
+    return set;
+  }
+
   function home() {
     RC.clear();
     var head = el("div", { class: "head" });
@@ -73,19 +89,26 @@
       { label: "Housing", href: "#/housing", sub: "Sober living + apartments" }
     ]);
     section("Learn", [
+      { label: "Today's practice", href: "#/today", sub: "Picked from your results" },
+      { label: "My progress", href: "#/progress" },
       { label: "Coping skills", href: "#/skills" },
-      { label: "Neuroscience class", href: "#/brain" }
+      { label: "Neuroscience class", href: "#/brain" },
+      { label: "Practice scenarios", href: "#/practice" }
     ]);
 
     RC.app.appendChild(el("h2", { text: "Journal" }));
     var ta = el("textarea", { id: "t", placeholder: "How are you doing today?", "aria-label": "New journal entry" });
+    var picked = [];
     RC.app.appendChild(el("div", { class: "card", style: "margin-top:0" }, [
       ta,
+      chipGroup("Mood (optional)", RC.TAGS.moods, picked),
+      chipGroup("Trigger (optional)", RC.TAGS.triggers, picked),
+      chipGroup("Skill I used (optional)", RC.TAGS.skills, picked),
       el("div", { class: "row" }, [
         el("button", { class: "btn", text: "Save entry", onclick: function () {
           var text = ta.value.trim();
           if (!text) { RC.toast("Write something first."); return; }
-          if (RC.journal.add(text)) { RC.toast("Saved."); home(); }
+          if (RC.journal.add(text, picked.slice())) { RC.toast("Saved."); home(); }
         } }),
         el("button", { class: "btn ghost", text: start ? "Change start date" : "Set start date", onclick: setDate })
       ])
@@ -93,10 +116,22 @@
 
     var list = RC.journal.all();
     if (list.length) {
+      var sel = el("select", { id: "ftag", onchange: function () { filterTag = sel.value; home(); } });
+      sel.appendChild(el("option", { value: "", text: "All entries" }));
+      RC.TAGS.moods.concat(RC.TAGS.triggers, RC.TAGS.skills).forEach(function (t) {
+        sel.appendChild(el("option", { value: t, text: t, selected: t === filterTag }));
+      });
+      RC.app.appendChild(el("div", { class: "field", style: "margin-top:14px" }, [el("label", { for: "ftag", text: "Show entries tagged" }), sel]));
+      var shown = filterTag ? list.filter(function (e) { return (e.tags || []).indexOf(filterTag) >= 0; }) : list;
+      if (!shown.length) RC.app.appendChild(el("p", { class: "muted", text: "No entries with that tag yet." }));
+      list = shown;
+    }
+    if (list.length) {
       var card = el("div", { class: "card" });
       list.forEach(function (e) {
         card.appendChild(el("div", { class: "entry" }, [
           el("time", { text: RC.fmtDateTime(e.ts) }),
+          (e.tags && e.tags.length) ? el("div", { class: "tags", text: e.tags.join(", ") }) : null,
           el("div", { class: "t", text: e.text }),
           el("button", { class: "link", text: "Delete", onclick: function () {
             if (!confirm("Delete this entry? This can't be undone.")) return;

@@ -15,7 +15,9 @@
 
   RC.screens["/insights"] = function () {
     RC.shell("Pattern insights");
-    RC.app.appendChild(el("p", { class: "muted", text: "Built from your daily check-ins. These are patterns in your own data, not diagnoses." }));
+    RC.app.appendChild(el("p", { class: "muted", text: "Built from your check-ins, journal tags, and practice. These are patterns in your own data, not diagnoses." }));
+    if (RC.connections) RC.connections.render(RC.app);
+    RC.app.appendChild(el("h2", { text: "From your check-ins" }));
     var all = RC.checkins.since(89), today = RC.dayKey(0);
     if (all.length < 7) {
       sec("Not enough data yet", "You have " + plural(all.length, "check-in") + " so far. Insights start showing at 7 and get more useful past 14. Check in most days and come back.");

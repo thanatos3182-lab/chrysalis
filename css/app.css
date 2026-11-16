@@ -125,3 +125,16 @@ ul.plain, ol.plain { margin: 0 0 12px; padding-left: 1.3em; } ul.plain li, ol.pl
 
 summary { list-style: none; }
 summary::-webkit-details-marker { display: none; }
+
+/* Journal tags, quizzes, practice */
+.tagset { border: 0; padding: 0; margin: 14px 0 0; min-width: 0; }
+.tagset legend { color: var(--muted); font-size: 14px; padding: 0; margin-bottom: 6px; }
+.chip { font: inherit; font-size: 15px; color: var(--blue); background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; margin: 0 6px 8px 0; min-height: 40px; cursor: pointer; }
+.chip[aria-pressed="true"] { color: #00140a; background: var(--green); border-color: var(--green); font-weight: 700; }
+.tags { color: var(--blue); font-size: 14px; margin-top: 2px; }
+.opt { white-space: normal; }
+.opt:disabled { opacity: 1; cursor: default; }
+.opt.right { color: #00140a; background: var(--green); border-color: var(--green); font-weight: 700; }
+.opt.wrong { color: #fff; background: #6a1d1d; border-color: #6a1d1d; }
+.opt.ok { color: #1a1300; background: #ffc107; border-color: #ffc107; font-weight: 700; }
+.opt:disabled:not(.right):not(.wrong):not(.ok) { color: var(--muted); }

@@ -23,9 +23,13 @@
   function list(title, intro, items, prefix, back, extra) {
     RC.shell(title, back);
     RC.app.appendChild(el("p", { class: "muted", text: intro }));
+    var sum = RC.learn ? RC.learn.summary(items) : "";
+    if (sum) RC.app.appendChild(el("p", { class: "val", text: sum }));
     var stack = el("div", { class: "stack" });
     items.forEach(function (it, i) {
-      stack.appendChild(el("a", { class: "row-link", href: "#/" + prefix + "/" + i, text: it.title }));
+      var word = RC.learn ? RC.learn.statusWord(it.title) : "";
+      stack.appendChild(el("a", { class: "row-link", href: "#/" + prefix + "/" + i,
+        text: (RC.learn ? RC.learn.mark(it.title) : "") + it.title, "aria-label": word ? it.title + ", " + word : null }));
     });
     RC.app.appendChild(stack);
     if (extra) extra();
@@ -34,6 +38,7 @@
   function detail(item, back, searchable) {
     RC.shell(item.title, back);
     RC.app.appendChild(renderBody(item.body));
+    if (RC.learn) RC.learn.actions(RC.app, item.title);
     if (searchable) {
       var q = encodeURIComponent(item.title + " addiction");
       RC.app.appendChild(el("h3", { text: "Read the research" }));
